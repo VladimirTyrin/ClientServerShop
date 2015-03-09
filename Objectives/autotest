@@ -1,0 +1,18 @@
+#!/bin/bash 
+
+exam=0
+while [ $exam -le 29 ]
+do
+  echo "Exam $exam requests..."
+  i=0
+  while [ $i -lt 10 ]
+  do
+    ./client select > /dev/null &
+    i=$((i+1))
+  done
+  exam=$((exam+1))
+  wait
+done
+
+wait
+./client stop > /dev/null
